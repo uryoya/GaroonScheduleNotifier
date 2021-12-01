@@ -1,0 +1,2 @@
+# GaroonScheduleNotifer
+Garoonの今日の予定をSlackのWorkflow経由で通知する
