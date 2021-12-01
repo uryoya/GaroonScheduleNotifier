@@ -1,0 +1,10 @@
+cybozu = {
+    login-name = ""
+    password = ""
+    host = ""
+    install-id = ""
+}
+
+slack = {
+    webhook-url = ""
+}
