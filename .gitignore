@@ -1,6 +1,19 @@
+# app config file
 src/main/resources/application.conf
+
+# Intellij
 .idea/
 .bsp/
+
+# vscode
+.vscode/
+*.iml
+project/project
+bloop
+.metals
+metals.sbt
+.bsp
+.bloop
 
 # Created by https://www.toptal.com/developers/gitignore/api/sbt,scala
 # Edit at https://www.toptal.com/developers/gitignore?templates=sbt,scala
