@@ -1,5 +1,6 @@
 src/main/resources/application.conf
 .idea/
+.bsp/
 
 # Created by https://www.toptal.com/developers/gitignore/api/sbt,scala
 # Edit at https://www.toptal.com/developers/gitignore?templates=sbt,scala
