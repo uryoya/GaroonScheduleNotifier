@@ -1,6 +1,6 @@
-package example.config
+package gsm.config
 
-import example.config.Config._
+import gsm.config.Config._
 
 final case class Config(cybozu: Cybozu, slack: Slack)
 

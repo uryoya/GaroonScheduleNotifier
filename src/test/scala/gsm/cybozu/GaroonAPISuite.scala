@@ -1,4 +1,4 @@
-package example.cybozu
+package gsm.cybozu
 
 class GaroonAPISuite extends munit.FunSuite {
   test("it run test") {

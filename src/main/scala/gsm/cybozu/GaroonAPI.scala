@@ -1,4 +1,4 @@
-package example.cybozu
+package gsm.cybozu
 
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -7,7 +7,7 @@ import scala.concurrent.duration._
 import akka.actor.typed.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model._
-import example.cybozu.GaroonAPI.{APIFailedException, JSONDecodeException}
+import gsm.cybozu.GaroonAPI.{APIFailedException, JSONDecodeException}
 
 object GaroonAPI {
   case class GaroonAccountCredential(loginName: String, password: String) {

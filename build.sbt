@@ -1,11 +1,11 @@
 ThisBuild / scalaVersion := "2.13.6"
 ThisBuild / version := "0.1.0-SNAPSHOT"
-ThisBuild / organization := "com.example"
-ThisBuild / organizationName := "example"
+ThisBuild / organization := "dev.uryoya"
+ThisBuild / organizationName := "Ryoya URANO"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "cybozuTodaysScheduleNotice",
+    name := "GaroonScheduleNotifer",
     libraryDependencies ++= Seq(
       // aws
       "com.amazonaws" % "aws-lambda-java-core" % "1.2.1",

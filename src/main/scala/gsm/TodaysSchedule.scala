@@ -1,4 +1,4 @@
-package example
+package gsm
 
 import java.time.format.DateTimeFormatter
 import akka.actor.typed.ActorSystem
@@ -6,9 +6,9 @@ import akka.actor.typed.scaladsl.Behaviors
 
 import scala.concurrent._
 import scala.concurrent.duration._
-import example.config.config
-import example.cybozu._
-import example.slack.SlackWebhookAPI
+import gsm.config.config
+import gsm.cybozu._
+import gsm.slack.SlackWebhookAPI
 import io.circe.generic.JsonCodec
 import io.circe.syntax._
 

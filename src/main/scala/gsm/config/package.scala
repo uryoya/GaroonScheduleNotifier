@@ -1,4 +1,4 @@
-package example
+package gsm
 
 import pureconfig._
 import pureconfig.generic.auto._

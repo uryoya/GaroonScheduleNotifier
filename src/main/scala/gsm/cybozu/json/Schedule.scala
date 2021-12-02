@@ -1,4 +1,4 @@
-package example.cybozu.json
+package gsm.cybozu.json
 
 import io.circe.generic.JsonCodec
 

@@ -1,4 +1,4 @@
-package example.cybozu.json
+package gsm.cybozu.json
 
 import java.time.ZonedDateTime
 import io.circe.generic.JsonCodec

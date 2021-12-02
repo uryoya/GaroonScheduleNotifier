@@ -1,4 +1,4 @@
-package example.slack.json
+package gsm.slack.json
 
 import io.circe.generic.JsonCodec
 

@@ -1,4 +1,4 @@
-package example.slack
+package gsm.slack
 
 import scala.concurrent._
 import scala.concurrent.duration._

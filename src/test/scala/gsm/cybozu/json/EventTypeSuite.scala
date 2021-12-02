@@ -1,11 +1,11 @@
-package example.cybozu.json
+package gsm.cybozu.json
 
-import example.cybozu.json.EventType
+import gsm.cybozu.json.EventType
 import io.circe.parser.decode
 import io.circe.syntax._
 
 class EventTypeSuite extends munit.FunSuite {
-  import example.cybozu.json.EventType._
+  import gsm.cybozu.json.EventType._
 
   test("JSONからEventTypeにデコードできる") {
     assertEquals(decode[EventType]("\"REGULAR\""), Right(Regular))
