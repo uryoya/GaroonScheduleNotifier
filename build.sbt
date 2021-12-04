@@ -5,7 +5,7 @@ ThisBuild / organizationName := "Ryoya URANO"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "GaroonScheduleNotifer",
+    name := "GaroonScheduleNotifier",
     libraryDependencies ++= Seq(
       // aws
       "com.amazonaws" % "aws-lambda-java-core" % "1.2.1",

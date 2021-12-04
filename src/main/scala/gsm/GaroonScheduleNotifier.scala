@@ -12,11 +12,11 @@ import gsm.slack.SlackWebhookAPI
 import io.circe.generic.JsonCodec
 import io.circe.syntax._
 
-object TodaysSchedule {
+object GaroonScheduleNotifier {
   @JsonCodec final case class SlackWebhookMessage(plan: String, detail: String, when: String)
 }
 
-class TodaysSchedule {
+class GaroonScheduleNotifier {
   implicit val actorSystem: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "SingleRequest")
   implicit val ec: ExecutionContextExecutor = actorSystem.executionContext
 
@@ -54,7 +54,7 @@ class TodaysSchedule {
   private[this] def render(events: List[json.Event]): List[String] = {
     val formatter = DateTimeFormatter.ofPattern("HH:mm")
     if (events.isEmpty)
-      List(TodaysSchedule.SlackWebhookMessage("", "", "今日の予定はありません").asJson.noSpaces)
+      List(GaroonScheduleNotifier.SlackWebhookMessage("", "", "今日の予定はありません").asJson.noSpaces)
     else
       events
         .sortBy(_.start.map(_.dateTime.toEpochSecond).getOrElse(0: Long)) // FIXME なんかうまくいってない
@@ -66,7 +66,7 @@ class TodaysSchedule {
               val end = event.end.map(_.dateTime.format(formatter)).getOrElse("")
               s"$start ~ $end"
           }
-          TodaysSchedule.SlackWebhookMessage(event.eventMenu, event.subject, when).asJson.noSpaces
+          GaroonScheduleNotifier.SlackWebhookMessage(event.eventMenu, event.subject, when).asJson.noSpaces
         }
   }
 }
