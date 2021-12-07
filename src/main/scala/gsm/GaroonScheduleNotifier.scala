@@ -16,11 +16,10 @@ object GaroonScheduleNotifier {
   @JsonCodec final case class SlackWebhookMessage(plan: String, detail: String, when: String)
 }
 
-class GaroonScheduleNotifier {
-  implicit val actorSystem: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "SingleRequest")
+class GaroonScheduleNotifier(implicit val actorSystem: ActorSystem[_]) {
   implicit val ec: ExecutionContextExecutor = actorSystem.executionContext
 
-  def run: Either[Exception, Unit] = {
+  def run: Unit = {
     val account = GaroonAPI.GaroonAccountCredential(config.cybozu.loginName, config.cybozu.password)
     val system = GaroonAPI.GaroonSystemCredential(config.cybozu.host, config.cybozu.installId)
     val garoonApi = new GaroonAPI(system, account)
@@ -42,13 +41,9 @@ class GaroonScheduleNotifier {
         println(message)
         slackApi.post(message)
       })
-    } yield () // FIXME
+    } yield ()
 
     Await.result(result, 100.seconds)
-
-    actorSystem.terminate()
-
-    Right(()) // FIXME
   }
 
   private[this] def render(events: List[json.Event]): List[String] = {
