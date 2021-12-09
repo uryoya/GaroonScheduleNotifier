@@ -17,7 +17,8 @@ object GaroonScheduleNotifier {
 }
 
 class GaroonScheduleNotifier(implicit val actorSystem: ActorSystem[_]) {
-  implicit val ec: ExecutionContextExecutor = actorSystem.executionContext
+  private[this] val logger = actorSystem.log
+  private[this] implicit val ec: ExecutionContextExecutor = actorSystem.executionContext
 
   def run: Unit = {
     val account = GaroonAPI.GaroonAccountCredential(config.cybozu.loginName, config.cybozu.password)
@@ -30,7 +31,8 @@ class GaroonScheduleNotifier(implicit val actorSystem: ActorSystem[_]) {
     val zone = now.getZone
     val start = java.time.ZonedDateTime.of(today.atTime(java.time.LocalTime.MIN), zone)
     val end = java.time.ZonedDateTime.of(today.atTime(java.time.LocalTime.MAX), zone)
-    println(start, end)
+    logger.info(s"get schedule for $start ~ $end")
+
     val result = for {
       events <- garoonApi.getEvents(start, end).flatMap {
         case Right(events) => Future.successful(events)
@@ -38,7 +40,7 @@ class GaroonScheduleNotifier(implicit val actorSystem: ActorSystem[_]) {
       }
       messages = render(events)
       _ <- Future.sequence(messages.map { message =>
-        println(message)
+        logger.info(s"send message to slack: $message")
         slackApi.post(message)
       })
     } yield ()

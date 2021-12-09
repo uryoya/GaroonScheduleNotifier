@@ -8,3 +8,7 @@ cybozu = {
 slack = {
     webhook-url = ""
 }
+
+akka = {
+    loglevel = ""
+}
